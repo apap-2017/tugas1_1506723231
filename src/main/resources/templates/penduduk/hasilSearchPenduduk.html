@@ -1,0 +1,87 @@
+<div th:replace="fragments/header"></div>
+	<div class="container">
+	<center>
+		<h2 th:text="'Lihat Data Penduduk - ' + ${penduduk.nik}">Lihat Data Penduduk</h2>
+		<br/>
+		
+		<div class="input-group col-sm-8">
+		  <span class="input-group-addon">NIK</span>
+		  <input type="text" th:value="${penduduk.nik}" class="form-control" readonly="true"/>
+		</div>
+		<br/>
+		<div class="input-group col-sm-8">
+		  <span class="input-group-addon">Nama</span>
+		  <input type="text" th:value="${penduduk.nama}" class="form-control" readonly="true"/>
+		</div>
+		<br/>
+		<div class="input-group col-sm-8">
+		  <span class="input-group-addon">Tempat/Tanggal Lahir</span>
+		  <input type="text" th:value="${penduduk.tempat_lahir} + '/' + ${penduduk.tanggal_lahir}" class="form-control" readonly="true"/>
+		</div>
+		<br/>
+		<div class="input-group col-sm-8">
+		  <span class="input-group-addon">Alamat</span>
+		  <input type="text" th:value="${keluarga.alamat}" class="form-control" readonly="true"/>
+		</div>
+		<br/>
+		<div class="input-group col-sm-8">
+		  <span class="input-group-addon">RT/RW</span>
+		  <input type="text" th:value="${keluarga.rt} + '/' + ${keluarga.rw}" class="form-control" readonly="true"/>
+		</div>
+		<br/>
+		<div class="input-group col-sm-8">
+		  <span class="input-group-addon">Kelurahan/Desa</span>
+		  <input type="text" th:value="${kelurahan.nama_kelurahan}" class="form-control" readonly="true"/>
+		</div>
+		<br/>
+		<div class="input-group col-sm-8">
+		  <span class="input-group-addon">Kecamatan</span>
+		  <input type="text" th:value="${kecamatan.nama_kecamatan}" class="form-control" readonly="true"/>
+		</div>
+		<br/>
+		<div class="input-group col-sm-8">
+		  <span class="input-group-addon">Kota</span>
+		  <input type="text" th:value="${kota.nama_kota}" class="form-control" readonly="true"/>
+		</div>
+		<br/>
+		<div class="input-group col-sm-8">
+		  <span class="input-group-addon">Golongan Darah</span>
+		  <input type="text" th:value="${penduduk.golongan_darah}" class="form-control" readonly="true"/>
+		</div>
+		<br/>
+		<div class="input-group col-sm-8">
+		  <span class="input-group-addon">Agama</span>
+		  <input type="text" th:value="${penduduk.agama}" class="form-control" readonly="true"/>
+		</div>
+		<br/>
+		<div class="input-group col-sm-8">
+		  <span class="input-group-addon">Status Perkawinan</span>
+		  <input type="text" th:value="${penduduk.status_perkawinan}" class="form-control" readonly="true"/>
+		</div>
+		<br/>
+		<div class="input-group col-sm-8">
+		  <span class="input-group-addon">Pekerjaan</span>
+		  <input type="text" th:value="${penduduk.pekerjaan}" class="form-control" readonly="true"/>
+		</div>
+		<br/>
+		<div class="input-group col-sm-8">
+		  <span class="input-group-addon">Kewarganegaraan</span>
+		  <input th:if="${penduduk.is_wni}" type="text" th:value="WNI" class="form-control" readonly="true"/>
+		  <input th:unless="${penduduk.is_wni}" type="text" th:value="WNA" class="form-control" readonly="true"/>
+		</div>
+		<br/>
+		<form action="/penduduk/mati" method="POST" th:object="${penduduk}">
+			<div class="input-group col-sm-8">
+			  <span class="input-group-addon">Status Kematian</span>
+			  <input type="hidden" th:field="*{nik}"/>
+			  <input type="hidden" th:field="*{is_wafat}"/>
+			  <input type="hidden" th:field="*{id_keluarga}"/>
+			  <input th:if="*{is_wafat}" th:value="Mati" type="text" class="form-control" readonly="true"/>
+			  <input th:unless="*{is_wafat}" th:value="Hidup" type="text" class="form-control" readonly="true"/>
+			  <input th:unless="*{is_wafat}" type="submit" value="Ubah Status Kematian" class="btn btn-primary"/>
+			</div>
+		</form>
+		
+	</center>
+	</div>
+<div th:replace="fragments/footer"></div>

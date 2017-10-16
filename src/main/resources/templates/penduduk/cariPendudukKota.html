@@ -1,0 +1,36 @@
+<div th:replace="fragments/header"></div>
+	<div class="container">
+		<center>
+		
+		<h3 th:text="'Lihat Data Penduduk di ' + ${kota.nama_kota}">Lihat Data Penduduk</h3>
+		
+		<br/>
+		
+		<form action="" method="GET">
+			<div class="input-group col-sm-8">
+				<span class="input-group-addon col-4 col-sm-3">Kota</span>
+				<select id="kota" name="kt" class="custom-select col-8 col-sm-9">
+					<option th:text="${kota.nama_kota}" th:value="${kota.id}">Kota</option>
+				</select>
+			</div>
+			
+			<br/>
+			
+			<div class="input-group col-sm-8">
+			  <span class="input-group-addon col-4 col-sm-3">Kecamatan</span>
+			  <select class="custom-select col-8 col-sm-9" id="kecamatan" name="kc">
+					<span th:each="kecamatan,i: ${kecamatans}">
+						<option th:text="${kecamatan.nama_kecamatan}" th:value="${kecamatan.id}">AB</option>
+					</span>
+				</select>
+			</div>
+			
+			<br/>
+			
+			<div>
+				<input type="submit" value="Submit" class="btn btn-primary col-8"/>
+			</div>
+		</form>
+		</center>
+	</div>
+<div th:replace="fragments/footer"></div>

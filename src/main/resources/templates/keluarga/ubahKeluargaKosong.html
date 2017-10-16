@@ -1,0 +1,25 @@
+<div th:replace="fragments/header"></div>
+<div class="container">
+	<center>
+		<h2 th:text="${title}">Title</h2>
+	</center>
+	<br/>
+	<hr/>
+	<br/>
+	<div class="row">
+		<div class="col-sm-12">
+		<p><em>Masukkan Nomor Kartu Keluarga</em></p>
+		<form action="" method="POST">
+			<div class="col-sm-12">
+			   <div class="input-group">
+			     <input name="nkk" type="text" class="form-control" placeholder="Masukkan NKK"/>
+			     <span class="input-group-btn">
+			       <input type="submit" value="Lihat" class="btn btn-primary"/>
+			     </span>
+			   </div>
+			</div>
+		</form>
+		</div>
+	</div>
+</div>
+<div th:replace="fragments/footer"></div>

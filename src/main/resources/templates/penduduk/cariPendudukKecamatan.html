@@ -1,0 +1,41 @@
+<div th:replace="fragments/header"></div>
+	<div class="container">
+	<center>
+		<h3 th:text="'Lihat Data Penduduk di ' + ${kota.nama_kota} + ', Kecamatan ' + ${kecamatan.nama_kecamatan}">Lihat Data Penduduk Berdasarkan Kecamatan</h3>
+		<form action="" method="GET">
+			<div class="input-group col-sm-8">
+				<span class="input-group-addon col-4 col-sm-3">Kota</span>
+				<select id="kota" name="kt" class="custom-select col-8 col-sm-9">
+					<option th:text="${kota.nama_kota}" th:value="${kota.id}">Kota</option>
+				</select>
+			</div>
+			
+			<br/>
+			
+			<div class="input-group col-sm-8">
+				<span class="input-group-addon col-4 col-sm-3">Kecamatan</span>
+				<select id="kota" name="kc" class="custom-select col-8 col-sm-9">
+					<option th:text="${kecamatan.nama_kecamatan}" th:value="${kecamatan.id}">Kecamatan</option>
+				</select>
+			</div>
+			
+			<br/>
+			
+			<div class="input-group col-sm-8">
+			  <span class="input-group-addon col-4 col-sm-3">Kelurahan</span>
+			  <select class="custom-select col-8 col-sm-9" id="kecamatan" name="kl">
+					<span th:each="kelurahan,i: ${kelurahans}">
+						<option th:text="${kelurahan.nama_kelurahan}" th:value="${kelurahan.id}">Kelurahan</option>
+					</span>
+				</select>
+			</div>
+			
+			<br/>
+			
+			<div>
+				<input type="submit" value="Submit" class="btn btn-primary col-8"/>
+			</div>
+		</form>
+	</center>
+	</div>
+<div th:replace="fragments/footer"></div>

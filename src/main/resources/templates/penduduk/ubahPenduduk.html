@@ -1,0 +1,140 @@
+<div th:replace="fragments/header"></div>
+<div class="container">
+	<center><h2>Ubah Penduduk</h2></center>
+	<form action="" method="POST" th:object="${penduduk}">
+		<center>
+		<div>
+			<input type="hidden" name="id" th:field="*{id}"/>
+		</div>
+		
+		<div class="input-group col-sm-8">
+			<span class="input-group-addon col-3">NIK</span>
+			<input type="text" th:field="*{nik}" readonly="true" class="form-control col-9" aria-label="nik" aria-describedby="basic-addon1"/>
+		</div>
+		
+		<br/>
+		
+		<div class="input-group col-sm-8">
+		  <span class="input-group-addon col-3">Nama</span>
+		  <input type="text" th:field="*{nama}" class="form-control col-9" aria-label="nama" aria-describedby="basic-addon1"/>
+		  <span th:if="${#fields.hasErrors('nama')}" th:errors="*{nama}" class="input-group-addon bg-warning" id="basic-addon2">Error Nama</span>
+		</div>
+		
+		<br/>
+		
+		<div class="input-group col-sm-8">
+		  <span class="input-group-addon col-4 col-sm-3">Tempat Lahir</span>
+		  <select class="custom-select col-8 col-sm-9" name="id_kecamatan" th:field="*{id_kecamatan}">
+				<span th:each="kecamatan,i: ${kecamatans}">
+					<option th:text="${kecamatan.nama_kecamatan}" th:value="${kecamatan.id}">AB</option>
+				</span>
+			</select>
+		</div>
+		
+		<br/>
+		
+		<div class="input-group col-sm-8">
+			<span class="input-group-addon col-4 col-sm-3">Tanggal Lahir</span>
+			<input class="custom-select col-8 col-sm-9" placeholder="yyyy-mm-dd" type="date" name="tanggal_lahir" th:field="*{tanggal_lahir}"/>
+		</div>
+		
+		<br/>
+		
+		<div class="input-group col-sm-8">
+			<span class="input-group-addon col-4 col-sm-3">Jenis Kelamin</span>
+			<select class="custom-select col-8 col-sm-9" name="jenis_kelamin" th:field="*{jenis_kelamin}">
+				<option value = "0">Laki-Laki</option>
+				<option value = "1">Perempuan</option>
+			</select>
+		</div>
+		
+		<br/>
+		
+		<div class="input-group col-sm-8">
+			<span class="input-group-addon col-4 col-sm-3">Golongan Darah</span>
+			<select class="custom-select col-8 col-sm-9" name="golongan_darah" th:field="*{golongan_darah}">
+				<option value = "AB+">AB+</option>
+				<option value = "O+">O+</option>
+				<option value = "A+">A+</option>
+				<option value = "B+">B+</option>
+				<option value = "AB-">AB-</option>
+				<option value = "O-">O-</option>
+				<option value = "A-">A-</option>
+				<option value = "B-">B-</option>
+			</select>
+		</div>
+		
+		<br/>
+		
+		<div class="input-group col-sm-8">
+			<span class="input-group-addon col-3">Agama</span>
+			<input type="text" th:field="*{agama}" class="form-control" aria-label="agama" aria-describedby="basic-addon1"/>
+			<span th:if="${#fields.hasErrors('agama')}" th:errors="*{agama}" class="input-group-addon bg-warning" id="basic-addon2">Error Agama</span>
+		</div>
+		
+		<br/>
+		
+		<div class="input-group col-sm-8">
+			<span class="input-group-addon col-5 col-sm-3">Status Perkawinan</span>
+			<select class="custom-select col-7 col-sm-9" name="status_perkawinan" th:field="*{status_perkawinan}">
+				<option value = "Kawin">Kawin</option>
+				<option value = "Belum Kawin">Belum Kawin</option>
+			</select>
+		</div>
+		
+		<br/>
+		
+		<div class="input-group col-sm-8">
+			<span class="input-group-addon col-3">Pekerjaan</span>
+			<input type="text" th:field="*{pekerjaan}" class="form-control" aria-label="pekerjaan" aria-describedby="basic-addon1"/>
+			<span th:if="${#fields.hasErrors('pekerjaan')}" th:errors="*{pekerjaan}" class="input-group-addon bg-warning" id="basic-addon2">Error Pekerjaan</span>
+		</div>
+		
+		<br/>
+		
+		<div class="input-group col-sm-8">
+			<span class="input-group-addon col-4 col-sm-3">Kewarganegaraan</span>
+			<input type="text" th:field="*{kewarganegaraan}" class="form-control" aria-label="kewarganegaraan" aria-describedby="basic-addon1"/>
+			<span th:if="${#fields.hasErrors('kewarganegaraan')}" th:errors="*{kewarganegaraan}" class="input-group-addon bg-warning" id="basic-addon2">Error Kewarganegaraan</span>
+		</div>
+		
+		<br/>
+		
+		<div class="input-group col-sm-8">
+			<span class="input-group-addon col-4 col-sm-3">Status Kematian</span>
+			<select class="custom-select col-8 col-sm-9" name="is_wafat" th:field="*{is_wafat}">
+				<option value = "0">Hidup</option>
+				<option value = "1">Mati</option>
+			</select>
+		</div>
+		
+		<br/>
+		
+		<div class="input-group col-sm-8">
+			<span class="input-group-addon col-3">ID Keluarga</span>
+			<input type="text" th:field="*{id_keluarga}" class="form-control" aria-label="id_keluarga" aria-describedby="basic-addon1"/>
+			<span th:if="${#fields.hasErrors('id_keluarga')}" th:errors="*{id_keluarga}">Error ID Keluarga</span>
+		</div>
+		
+		<br/>
+		
+		<div class="input-group col-sm-8">
+			<span class="input-group-addon col-5 col-sm-4">Status Dalam Keluarga</span>
+			<select class="custom-select col-7 col-sm-8" name="status_dalam_keluarga" th:field="*{status_dalam_keluarga}">
+				<option value = "Anak">Anak</option>
+				<option value = "Pembantu">Pembantu</option>
+				<option value = "Kepala Keluarga">Kepala Keluarga</option>
+				<option value = "Famili Lain">Famili Lain</option>
+				<option value = "Istri">Istri</option>
+			</select>
+		</div>
+		
+		<br/>
+		
+		<div>
+			<input type="submit" value="Submit" class="btn btn-primary col-8"/>
+		</div>
+		</center>
+	</form>
+</div>
+<div th:replace="fragments/footer"></div>

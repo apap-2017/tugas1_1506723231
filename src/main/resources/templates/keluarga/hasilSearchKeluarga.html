@@ -1,0 +1,46 @@
+<div th:replace="fragments/header"></div>
+<div class="container">
+	<center>
+		<h2 th:text="'Lihat Data Keluarga - ' + ${keluarga.nomor_kk}">Lihat Data Keluarga</h2>
+		<p th:text="'NKK ' + ${keluarga.nomor_kk}"></p>
+		<p th:text="'Alamat ' + ${keluarga.alamat}"></p>
+		<p th:text="'RT/RW ' + ${keluarga.rt} + '/' + ${keluarga.rw}"></p>
+		<p th:text="'Kelurahan/Desa ' + ${kelurahan.nama_kelurahan}"></p>
+		<p th:text="'Kecamatan ' + ${kecamatan.nama_kecamatan}"></p>
+		<p th:text="'Kota ' + ${kota.nama_kota}"></p>
+		
+		<hr/>
+		
+		<table class="table table-striped text-center col-sm-8">
+			<tr class="bg-primary text-light">
+				<td>No</td>
+				<td>Nama Lengkap</td>
+				<td>NIK</td>
+				<td>Jenis Kelamin</td>
+				<td>Tempat Lahir</td>
+				<td>Tanggal Lahir</td>
+				<td>Agama</td>
+				<td>Pekerjaan</td>
+				<td>Status Perkawinan</td>
+				<td>Status dalam Keluarga</td>
+				<td>Kewarganegaraan</td>
+			</tr>
+			<tr th:each="penduduk,iterationStatus: ${penduduks}">
+		    		<td th:text="${iterationStatus.count}">1</td>
+		    		<td th:text="${penduduk.nama}"> Nama Lengkap</td>
+		    		<td th:text="${penduduk.nik}"> NIK</td>
+		    		<td th:if="${penduduk.jenis_kelamin}" th:text="Perempuan"> Perempuan</td>
+		    		<td th:unless="${penduduk.jenis_kelamin}" th:text="Laki-laki"> Laki-laki</td>
+		    		<td th:text="${penduduk.tempat_lahir}"> Tempat Lahir</td>
+		    		<td th:text="${penduduk.tanggal_lahir}"> Tanggal Lahir</td>
+		    		<td th:text="${penduduk.agama}"> Agama</td>
+		    		<td th:text="${penduduk.pekerjaan}"> Pekerjaan</td>
+		    		<td th:text="${penduduk.status_perkawinan}"> Status Perkawinan</td>
+		    		<td th:text="${penduduk.status_dalam_keluarga}"> Status dalam Keluarga</td>
+		    		<td th:if="${penduduk.is_wni}" th:text="WNI"> Kewarganegaraan</td>
+		    		<td th:unless="${penduduk.is_wni}" th:text="WNA"> Kewarganegaraan</td>
+	       	</tr>
+	    </table>
+	</center>
+</div>
+<div th:replace="fragments/footer"></div>

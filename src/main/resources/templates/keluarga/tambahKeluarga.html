@@ -1,0 +1,47 @@
+<div th:replace="fragments/header"></div>
+	<div class="container">
+	<center>
+		<h2>Tambah Keluarga</h2>
+		<form action="" method="POST" th:object="${keluarga}">
+			<div class="input-group col-sm-8">
+			  <span class="input-group-addon">Alamat</span>
+			  <input type="text" th:field="*{alamat}" class="form-control"/>
+			  <span th:if="${#fields.hasErrors('alamat')}" th:errors="*{alamat}" class="input-group-addon bg-warning">Error Alamat</span>
+			</div>
+			
+			<br/>
+			
+			<div class="input-group col-sm-8">
+			  <span class="input-group-addon">RT</span>
+			  <input type="text" th:field="*{rt}" class="form-control" aria-label="rt" aria-describedby="basic-addon1"/>
+			  <span th:if="${#fields.hasErrors('rt')}" th:errors="*{rt}" class="input-group-addon bg-warning" id="basic-addon2">Error Nama</span>
+			</div>
+			
+			<br/>
+			
+			<div class="input-group col-sm-8">
+			  <span class="input-group-addon">RW</span>
+			  <input type="text" th:field="*{rw}" class="form-control" aria-label="rw" aria-describedby="basic-addon1"/>
+			  <span th:if="${#fields.hasErrors('rw')}" th:errors="*{rw}" class="input-group-addon bg-warning" id="basic-addon2">Error Nama</span>
+			</div>
+			
+			<br/>
+			
+			<div class="input-group col-sm-8">
+			  <span class="input-group-addon col-4 col-sm-3">Kelurahan/Desa</span>
+			  <select class="custom-select col-8 col-sm-9" th:field="*{id_kelurahan}">
+					<span th:each="kelurahan,i: ${kelurahans}">
+						<option th:text="${kelurahan.nama_kelurahan}" th:value="${kelurahan.id}">Kelurahan</option>
+					</span>
+				</select>
+			</div>
+			
+			<br/>
+			
+			<div>
+				<input type="submit" value="Submit" class="btn btn-primary col-sm-8"/>
+			</div>
+		</form>
+	</center>
+	</div>
+<div th:replace="fragments/footer"></div>

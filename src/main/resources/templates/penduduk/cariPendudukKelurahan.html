@@ -1,0 +1,62 @@
+<div th:replace="fragments/header"></div>
+<div class="container">
+	<center><h3 th:text="'Lihat Data Penduduk di ' + ${kota.nama_kota} + ', Kecamatan ' + ${kecamatan.nama_kecamatan} + ', Kelurahan ' + ${kelurahan.nama_kelurahan}">Lihat Data Penduduk</h3></center>
+	
+	<hr/>
+	<br/>
+	
+	<div class="row">
+		<div class="col-md-6">
+			<h3>Penduduk Dengan Usia Termuda</h3>
+			<table class="table table-striped">
+				<tr class="text-center">
+					<td>NIK</td>
+					<td>Nama</td>
+					<td>Tanggal lahir</td>
+				</tr>
+				<tr>
+			    		<td th:text="${pendudukTermuda.nik}"> NIK</td>
+			    		<td th:text="${pendudukTermuda.nama}"> Nama Lengkap</td>
+			    		<td th:text="${pendudukTermuda.tanggal_lahir}"> Tanggal Lahir</td>
+			      	</tr>
+			   </table>
+	    </div>
+	    <div class="col-md-6">
+		    <h3>Penduduk Dengan Usia Tertua</h3>
+			<table class="table table-striped">
+				<tr class="text-center">
+					<td>NIK</td>
+					<td>Nama</td>
+					<td>Tanggal lahir</td>
+				</tr>
+				<tr>
+			    		<td th:text="${pendudukTertua.nik}"> NIK</td>
+			    		<td th:text="${pendudukTertua.nama}"> Nama Lengkap</td>
+			    		<td th:text="${pendudukTertua.tanggal_lahir}"> Tanggal Lahir</td>
+		       	</tr>
+		    </table>
+	    </div>
+    </div>
+    
+    <br/>
+    <br/>
+	
+	<div style="overflow: scroll; width: 100%; height:300px">
+	<table class="table table-striped text-center">
+		<tr class="bg-primary text-light">
+			<td>No</td>
+			<td>NIK</td>
+			<td>Nama</td>
+			<td>Jenis Kelamin</td>
+		</tr>
+		<tr th:each="penduduk,iter: ${penduduks}">
+			<td th:text="${iter.count}"> No</td>
+	    		<td th:text="${penduduk.nik}"> NIK</td>
+	    		<td th:text="${penduduk.nama}"> Nama Lengkap</td>
+	    		<td th:if="${penduduk.jenis_kelamin}" th:text="Perempuan"> Perempuan</td>
+	    		<td th:unless="${penduduk.jenis_kelamin}" th:text="Laki-laki"> Laki-laki</td>
+       	</tr>
+    </table>
+    </div>
+</div>
+<div th:replace="fragments/footer"></div>
