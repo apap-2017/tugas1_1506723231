@@ -27,7 +27,6 @@ public class PendudukModel
     
     private String tempat_lahir;
     
-    @NotNull
     private int id_kecamatan;
     
     @NotNull
